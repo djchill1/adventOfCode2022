@@ -1,7 +1,15 @@
 # adventOfCode2022
 
 <!-- AOC TILES BEGIN -->
-
+<h1 align="center">
+  2022 - 4 ⭐
+</h1>
+<a href="01/1.py">
+  <img src="Media2.png" width="161px">
+</a>
+<a href="02/2.py">
+  <img src="Media2.png" width="161px">
+</a>
 <!-- AOC TILES END -->
 
 My solutions to advent of code problems.

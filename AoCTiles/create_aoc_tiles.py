@@ -384,7 +384,7 @@ def handle_year(year: int, day_to_solutions: dict[int, list[str]]):
         pattern = re.compile(rf"{begin}.*{end}", re.DOTALL | re.MULTILINE)
         new_text = pattern.sub(f"{begin}\n{html}\n{end}", text)
 
-    with open(README_PATH, "w") as file:
+    with open(README_PATH, "w", encoding="utf-8") as file:
         file.write(str(new_text))
 
 
