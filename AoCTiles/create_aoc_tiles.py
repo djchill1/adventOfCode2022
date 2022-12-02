@@ -44,7 +44,7 @@ SESSION_COOKIE_PATH = AOC_DIR / "session.cookie"
 
 # Whether the graphic should be created for days that have not been completed yet. Note that missing days between
 # completed days will still be created.
-CREATE_ALL_DAYS = False
+CREATE_ALL_DAYS = True
 
 # Instead of showing the time and rank you achieved this just shows whether
 # it was completed with a checkmark
@@ -346,8 +346,11 @@ def handle_day(day: int, year: int, solutions: list[str], html: HTML, day_scores
             languages = []
     day_graphic_path = generate_day_tile_image(f"{day:02}", f"{year:04}", languages, day_scores)
     day_graphic_path = day_graphic_path.relative_to(AOC_DIR)
+    print(day_graphic_path)
+    # day_graphic_path = day_graphic_path.replace('\\', '/')
+    # print(day_graphic_path)
     with html.tag("a", href=str(solution_link)):
-        html.tag("img", closing=False, src=str(day_graphic_path), width=TILE_WIDTH_PX)
+        html.tag("img", closing=False, src=day_graphic_path, width=TILE_WIDTH_PX)
 
 
 def find_first_number(string: str) -> int:
@@ -384,7 +387,7 @@ def handle_year(year: int, day_to_solutions: dict[int, list[str]]):
         pattern = re.compile(rf"{begin}.*{end}", re.DOTALL | re.MULTILINE)
         new_text = pattern.sub(f"{begin}\n{html}\n{end}", text)
 
-    with open(README_PATH, "w", encoding="utf-8") as file:
+    with open(README_PATH, "w") as file:
         file.write(str(new_text))
 
 
