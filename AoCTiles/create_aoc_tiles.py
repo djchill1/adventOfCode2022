@@ -79,11 +79,11 @@ def get_solution_paths_dict_for_years() -> dict[int, dict[int, list[str]]]:
     # If you have a deep structure then you can adjust the year dir as well:
     # year_dir = year_dir / "src/main/kotlin/com/example/aoc"
     for day_dir in get_paths_matching_regex(AOC_DIR, DAY_PATTERN):
-        print(day_dir)
+        # print(day_dir)
         day = find_first_number(day_dir.name)
-        print(day)
+        print('day', day)
         solutions = sorted(find_recursive_solution_files(day_dir))
-        print(solutions)
+        # print(solutions)
 
         # To filter by extension:
         solutions = [s for s in solutions if s.suffix == ".py"]
@@ -96,10 +96,10 @@ def get_solution_paths_dict_for_years() -> dict[int, dict[int, list[str]]]:
         #     solutions = [Path("dummy.kt")]
 
         solutions = [solution.relative_to(AOC_DIR) for solution in solutions]
-        print(solutions)
+        # print(solutions)
 
         solution_paths_dict[year][day] = [str(s).replace('\\', '/') for s in solutions]
-        print(solution_paths_dict)
+        # print(solution_paths_dict)
     # solution_paths_dict = {'2022': {1: ['01/1.py'], 2: ['02/2.py']}}
     return solution_paths_dict
 
@@ -346,7 +346,6 @@ def handle_day(day: int, year: int, solutions: list[str], html: HTML, day_scores
             languages = []
     day_graphic_path = generate_day_tile_image(f"{day:02}", f"{year:04}", languages, day_scores)
     day_graphic_path = day_graphic_path.relative_to(AOC_DIR)
-    print(day_graphic_path)
     # day_graphic_path = day_graphic_path.replace('\\', '/')
     # print(day_graphic_path)
     with html.tag("a", href=str(solution_link)):
@@ -380,15 +379,15 @@ def handle_year(year: int, day_to_solutions: dict[int, list[str]]):
     for day, solutions in day_to_solutions.items():
         handle_day(day, year, solutions, html, leaderboard.get(day, None))
 
-    with open(README_PATH, "r") as file:
-        text = file.read()
-        begin = "<!-- AOC TILES BEGIN -->"
-        end = "<!-- AOC TILES END -->"
-        pattern = re.compile(rf"{begin}.*{end}", re.DOTALL | re.MULTILINE)
-        new_text = pattern.sub(f"{begin}\n{html}\n{end}", text)
-
-    with open(README_PATH, "w") as file:
-        file.write(str(new_text))
+    # with open(README_PATH, "r") as file:
+    #     text = file.read()
+    #     begin = "<!-- AOC TILES BEGIN -->"
+    #     end = "<!-- AOC TILES END -->"
+    #     pattern = re.compile(rf"{begin}.*{end}", re.DOTALL | re.MULTILINE)
+    #     new_text = pattern.sub(f"{begin}\n{html}\n{end}", text)
+    #
+    # with open(README_PATH, "w") as file:
+    #     file.write(str(new_text))
 
 
 def main():
