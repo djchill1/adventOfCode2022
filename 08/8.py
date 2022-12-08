@@ -1,7 +1,7 @@
 import init
 import numpy as np
 
-data = init.read_data(isTest=True, )
+data = init.read_data(isTest=False, )
 
 forest_list = []
 for row in data:
@@ -76,16 +76,16 @@ def visible_trees(matrix, row, col):
     # print(transposition)
 
     # left visibility
-    print('left')
+    # print('left')
     for iter in range(col-1, -1, -1):
         value = matrix[row][iter]
-        print(iter, value)
+        # print(iter, value)
         visibility['left'] += 1
         if value >= tree_height:
             break
 
     # right visibility
-    print('right')
+    # print('right')
     for iter in range(col+1, len(matrix[row])):
         value = matrix[row][iter]
         # print(iter, value)
@@ -94,18 +94,18 @@ def visible_trees(matrix, row, col):
             break
 
     # above visibility
-    # print('above')
-    for iter in range(col-1, -1, -1):
-        value = transposition[col][iter]
-        # print(iter, value)
+    print('above')
+    for iter in range(row-1, -1, -1):
+        value = matrix[iter][col]
+        print(iter, value)
         visibility['above'] += 1
         if value >= tree_height:
             break
 
     # below visibility
     print('below')
-    for iter in range(col+1, len(transposition[col])):
-        value = transposition[col][iter]
+    for iter in range(row+1, len(matrix[row])):
+        value = matrix[iter][col]
         print(iter, value)
         visibility['below'] += 1
         if value >= tree_height:
