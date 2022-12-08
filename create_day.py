@@ -29,4 +29,4 @@ def create_day_files(day):
     except:
         logging.error("Can't create python file for day " + day + " due to a conflict")
 
-create_day_files('07')
+create_day_files('09')
