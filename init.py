@@ -1,5 +1,19 @@
 import logging
 import sys
+import typing
+import re
+
+
+def lmap(func, *iterables):
+    return list(map(func, *iterables))
+
+
+def ints(s: str) -> typing.List[int]:
+    return lmap(int, re.findall(r"-?\d+", s))
+
+
+def positive_ints(s: str) -> typing.List[int]:
+    return lmap(int, re.findall(r"\d+", s))
 
 
 def read_data(isTest=False, value='default'):
