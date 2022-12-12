@@ -86,7 +86,7 @@ def get_solution_paths_dict_for_years() -> dict[int, dict[int, list[str]]]:
         # print(solutions)
 
         # To filter by extension:
-        solutions = [s for s in solutions if s.suffix == ".py"]
+        # solutions = [s for s in solutions if s.suffix == ".py"]
 
         # To only show a single solution:
         # solutions = [solutions[0]]
