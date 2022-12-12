@@ -16,6 +16,11 @@ def positive_ints(s: str) -> typing.List[int]:
     return lmap(int, re.findall(r"\d+", s))
 
 
+adjs = {(-1, 0), (1, 0), (0, -1), (0, 1)}
+diags = {(-1, -1), (-1, 1), (1, -1), (1, 1)}
+all_dirs = adjs | diags
+
+
 def read_data(isTest=False, value='default'):
     current_day = (sys.argv[0].split('/')[-1].split('.')[0])
     if isTest:
