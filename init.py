@@ -21,6 +21,10 @@ diags = {(-1, -1), (-1, 1), (1, -1), (1, 1)}
 all_dirs = adjs | diags
 
 
+def manhattan_distance(x0, y0, x1, y1):
+    return abs(x0 - x1) + abs(y0 - y1)
+
+
 def read_data(isTest=False, value='default'):
     current_day = (sys.argv[0].split('/')[-1].split('.')[0])
     if isTest:
